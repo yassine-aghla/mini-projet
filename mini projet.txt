@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct contact {
+    char nom[100] ;
+    char numero_de_telephone [100];
+    char gmail [100];
+};typedef struct contact contact;
+void afficher (struct contact t[100],int n){
+    for(int i=0;i<n;i++){
+    printf("votre nom est %s\n ",t[i].nom);
+    printf("votre numero est %s\n ",t[i].numero_de_telephone);
+    printf("votre gmail est %s\n ",t[i].gmail);
+    }
+    }
+    void modifier(struct contact t[100],int n ){
+        char name[100];
+       printf("entrer votre nom pour la modification de les infos ");
+        scanf("%s",name);
+        for(int i=0;i<n;i++){
+            if(strcmp(t[i].nom,name)==0){
+            printf("entre votre nouveau numero");
+            scanf("%s",t[i].numero_de_telephone);
+            printf("entre votre nouveau gmail");
+            scanf("%s",t[i].gmail);
+            printf("votre nom est %s et votre nouvelle numero est %s et gmail est %s \n ",name,t[i].numero_de_telephone,t[i].gmail);
+             return;
+            }
+            }
+            printf("cet contact pas existe");
+     }
+     void rechercher(struct contact t[100],int n ){
+          char name[100];
+       printf("entrer votre nom que recherche ");
+        scanf("%s",name);
+        for(int i=0;i<n;i++){
+            if(strcmp(t[i].nom,name)==0){
+                printf("le contact est existe \n");
+               printf("%s \n",t[i].nom);
+                printf("%s \n",t[i].numero_de_telephone);
+                 printf("%s \n",t[i].gmail);
+                 return;
+            }
+     } printf("le contact nexiste pas");
+     }
+    void ajouter(struct contact t[100], int n) {
+    char name[100];
+    printf("Entrer le nom du contact que vous voulez ajouter : ");
+    scanf("%s", name);
+    for (int i = 0; i < n; i++) {
+        if (strcmp(t[i].nom, name) == 0) {
+            printf("Le contact existe déjà.\n");
+            return;
+        }
+    }
+    strcpy(t[n].nom, name);
+        printf("Entrer le numéro de téléphone : ");
+        scanf("%s", t[n].numero_de_telephone);
+        printf("Entrer l'email : ");
+        scanf("%s", t[n].gmail);
+        printf("Le contact a été ajouté avec succès.\n");
+   }
+int main() {
+    int n;
+    struct contact t[100] ; 
+    int choix;
+    do{
+    printf("enrer votre choix \n");
+    scanf("%d",&choix);
+    printf("entre le nombre de contact ");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+    printf("entrer votre nom  \n");
+    scanf(" %s",t[i].nom);
+    printf("entrer votre numero de telephone \n");
+    scanf(" %s",t[i].numero_de_telephone);
+     printf("entrer votre eamil \n");
+    scanf(" %s",t[i].gmail);
+    }
+    switch(choix){
+        case 1: ajouter(t,n);
+       break;
+        case 2: modifier(t,n);
+         break;
+        case 3: afficher(t,n);
+         break;
+        case 4: rechercher(t,n);
+         break;
+         default: printf("votre choix pas valide ");
+         break;
+ }
+     }while(choix>0 || choix < 5);
+return 0;
+}
