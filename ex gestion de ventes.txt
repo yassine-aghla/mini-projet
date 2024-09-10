@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+void calculer(float t[100],int n){
+    float s;
+    for(int i=0;i<n;i++){
+        s=s+t[i];
+        }
+        printf("%.2f",s);
+}
+void afficher(float t[100],int n){
+    float moyenne;
+    printf("entrer le moyenne \n");
+    scanf("%f",&moyenne);
+    for(int i=0;i<n;i++){
+    if(t[i]>moyenne){
+        printf("%.2f",t[i]);
+    }
+}
+}
+void compter_sup(float t[100],int n){
+    float seuil;
+    int cpt=0;
+    printf("entrer le seuil \n");
+    scanf("%f",&seuil);
+    for(int i=0;i<n;i++){
+            if(t[i]>seuil){
+        cpt++;
+    }
+}
+printf("nombre de ventes superieur a %f est : %d",seuil,cpt);
+}
+void compter_inf(float t[100],int n){
+    float seuil;
+    int cpt=0;
+    printf("entrer le seuil \n");
+    scanf("%f",&seuil);
+    for(int i=0;i<n;i++){
+            if(t[i]<seuil){
+        cpt++;
+    }
+}
+printf("nombre de ventes inferieur a %f est : %d",seuil,cpt);
+}
+
+int main()
+{
+    int n,choix;
+    float t[100];
+    printf("combien du produits ont ete vendus aujourd hui");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+     printf("entre le montant de la vente du produit %d \n",i+1);
+     scanf("%f",&t[i]);
+      }
+     do{
+     printf("Que souhaitez vous faire \n ");
+     printf("1-calculer le total des ventes \n");
+     printf("2-trouver la vente la plus elevee et la plus basee \n");
+     printf("3-afficher les ventes superieur a une moyenne \n");
+     printf("3-compter le nombre de ventes superieur a 100 \n");
+     printf("5-compter le nombre de ventes inferieur a 100 \n");
+     printf("6-Quitter");
+     printf("entrer votre choix\n");
+     scanf("%d",&choix);
+     switch(choix){
+     case 1:calculer(t,n);
+         break;
+     case 2:afficher(t,n);
+         break;
+     case 3:break;
+     case 4:compter_sup(t,n);
+         break;
+     case 5:compter_inf(t,n) ;
+         break;
+     case 6:pritnf("au revoir");
+         break;
+     }
+     }while(choix<0 || choix>6);
+
+
+    return 0;
+}
