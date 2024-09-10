@@ -1,0 +1,110 @@
+#include <stdio.h>
+#include <string.h>
+struct date_de_naissance {
+    int jour;
+    char mois[10] ;
+    int annee;
+};typedef struct date_de_naissance Date ;
+struct etudiant {
+    char Numéro_unique[20];
+    char nom[10];
+    char prenom[10];
+    struct date_de_naissance date  ;
+    char departement [20];
+    float note_general;
+};
+ void ajouter(struct etudiant t[300], int n) {
+    char numero[10];
+    printf("Entrer le numero unique du etudiant que vous voulez ajouter : ");
+    scanf("%s", numero);
+    for(int i=0;i<n;i++){
+        if (strcmp(t[i].Numéro_unique, numero) == 0) {
+            printf("ce etudiant existe déjà.\n");
+            return;
+        }
+    } 
+    for(int i=0;i<n;i++){
+      printf("Entrer le nom du etudiant que vous voulez ajouter : \n");
+    scanf("%s", t[i].nom);
+     printf("Entrer le prenom du etudiant que vous voulez ajouter : \n");
+    scanf("%s", t[i].prenom);
+     printf("entrer la date de naissance\n");
+     scanf("%d\t%s\t%d",&t[i]. date.jour,t[i]. date.mois,&t[i].date.annee);
+    printf("Entrer le departement du etudiant que vous voulez ajouter : \n");
+    scanf("%s", t[i].departement);
+     printf("Entrer la note general du etudiant que vous voulez ajouter : \n");
+    scanf("%d", &t[i].note_general);
+    printf("letudiant ajoutee avec succes\n");
+    } 
+ }   
+ void modifier(struct etudiant t[100],int n ){
+        char numero[100];
+       printf("entrer votre numero pour la modification de les infos \n");
+        scanf("%s",numero);
+        for(int i=0;i<n;i++){
+            if(strcmp(t[i].Numéro_unique,numero)==0){
+            printf("entre votre nouveau nom");
+            scanf("%s",t[i].nom);
+             printf("entre votre nouveau prenom");
+            scanf("%s",t[i].prenom);
+             printf("entre votre nouveau departement");
+            scanf("%s",t[i].departement);
+            
+            printf("votre modification est le nom : %s , le prenom ; %s , le departement ; %s ",t[i].nom,t[i].prenom,t[i].departement);
+             return;
+            }
+            }
+            printf("ce etudiant pas existe");
+ }
+ void supprimer(struct etudiant t[100],int n ){
+        char numero[100];
+       printf("entrer votre numero pour la suppression de les infos \n");
+        scanf("%s",numero);
+        for(int i=0;i<n;i++){
+            if(strcmp(t[i].Numéro_unique,numero)==0){
+         for (int j =i; j < n-1; j++) {
+                t[j] = t[j+1];
+            }
+            n--;
+            printf("letudiant est supprime.\n");
+            return;
+        }
+    }
+    printf("ce etudiant pas existe\n");
+}
+void afficher (struct etudiant t[100],int n){
+    for(int i=0;i<n;i++){
+     printf("votre numero est %s\n ",t[i].Numéro_unique);
+    printf("votre nom est %s\n ",t[i].nom);
+    printf("votre prenom est %s\n ",t[i].prenom);
+    printf("votre date de naissaince est %d\t %s\t %d\t \n  ",t[i].date.jour,t[i].date.mois,t[i].date.annee);
+     printf("votre departement est %s\n ",t[i].departement);
+      printf("votre note general est %d\n ",t[i].note_general);
+    }
+    }
+int main() {
+     int n;
+    struct etudiant t[300] ; 
+   // int choix;
+   // do{
+    //printf("enrer votre choix \n");
+    //scanf("%d",&choix);
+    printf("entre le nombre des etudiant ");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+         printf("Entrer le numero du etudiant %d: \n",i+1);
+    scanf("%s", t[i].Numéro_unique);
+      printf("Entrer le nom du etudiant %d: \n",i+1);
+    scanf("%s", t[i].nom);
+     printf("Entrer le prenom du etudiant %d: \n",i+1 );
+    scanf("%s", t[i].prenom);
+     printf("entrer la date de naissance \n");
+     scanf("%d\t%s\t%d ",&t[i].date.jour,t[i].date.mois,&t[i].date.annee);
+    printf("Entrer le departement du etudiant %d: \n",i+1);
+    scanf("%s", t[i].departement);
+     printf("Entrer la note general du etudiant %d: \n",i+1);
+    scanf("%d", &t[i].note_general);
+    }
+  afficher(t,n);
+    return 0;
+}
